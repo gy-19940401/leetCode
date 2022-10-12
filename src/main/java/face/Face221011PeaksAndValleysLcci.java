@@ -19,7 +19,25 @@ public class Face221011PeaksAndValleysLcci {
     }
 
     public static void wiggleSort(int[] nums) {
-
-
+        //定义 0 峰 1-谷
+        for (int i = 1; i < nums.length; i++) {
+            if (i % 2 == 0) {
+                // 当前位 应该为 峰，就说明前一位必须是谷 就要求 前一位必须 小于 当前位
+                // 判断前面是不是谷
+                if (nums[i] < nums[i - 1]) {
+                    swap(nums, i, i - 1);
+                }
+            } else {
+                //当前为谷，判断前面是不是峰
+                if (nums[i] > nums[i - 1]) {
+                    swap(nums, i, i - 1);
+                }
+            }
+        }
+    }
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
